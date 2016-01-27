@@ -1,0 +1,43 @@
+<site
+    name="My demo website"
+    homepage="home"
+    >
+    <language name="English" />
+    
+    <content block="common: email">
+        <property name="content">joe@johnson.com</property>
+    </content>
+    <content block="Common: phone">
+        <property name="content">9999-99999-99</property>
+    </content>
+
+    <page
+        language="English"
+        name="home"
+        title="The homepage"
+        template="layout.html"
+        active="true"
+        parent=""
+
+        meta_title="bla"
+        meta_keywords="hello, world"
+        meta_description="yo"
+        og_title="bla"
+        og_description="ahaha"
+        og_image="some image"
+        redirect_internal="contact"
+        redirect_statuscode="301"
+        date_start="01-01-2016"
+        date_end="31-12-2016"
+        url="/">
+        
+        <content block="home: cta">
+            <property name="content">Buy now!!</property>
+        </content>
+    </page>
+    <list name="blog">
+        <item>
+            <content field="title">This is the title</content>
+        </item>
+    </list>
+</site>

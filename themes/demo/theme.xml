@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme
+    name="Demo">
+    <block
+        name="Common: email"
+        type="HTML"
+        editable="true"
+        inPageEditing="true"
+        global="true"
+        >
+        <property name="content">info@example.com</property>
+        <header>START</header>
+        <footer>END</footer>
+    </block>
+    
+    <block
+        name="Common: phone"
+        type="HTML"
+        editable="true"
+        inPageEditing="true"
+        global="true"
+        >
+        <property name="content">no phone</property>
+        <header>STARTPHONE</header>
+        <footer>ENDPHONE</footer>
+    </block>
+    
+    <block
+        name="Test: blog list"
+        type="List"
+        list="Blog"
+        view="default"
+        limit="10"
+        sort="date_desc"
+        pagination="A"
+        filter="bla"
+        />
+    <list
+        name="Blog">
+        <field
+            name="Title"
+            block-id="Blog: Title"
+            required="no"
+            hide="no"
+            code="#ITEM_TITLE#">
+        </field>
+        <view
+            name="default">
+            <header>div listitems</header>
+            <footer>close div</footer>
+            <content>Title: #ITEM-TITLE#</content>
+        </view>
+    </list>
+</theme>
