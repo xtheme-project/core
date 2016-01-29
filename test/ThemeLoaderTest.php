@@ -19,7 +19,7 @@ class ThemeLoaderTest extends PHPUnit_Framework_TestCase
         $site = $siteLoader->load(__DIR__ . '/../sites/demo/site.xml');
         
         $renderer = new Renderer();
-        $html = $renderer->renderSitePage($theme, $site, 'home', 'English');
+        $html = $renderer->renderSitePage($theme, $site, 'home', 'en');
         echo $html;
     }
 }
