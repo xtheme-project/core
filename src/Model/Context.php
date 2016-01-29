@@ -4,6 +4,19 @@ namespace XTheme\Core\Model;
 
 class Context
 {
+    private $language;
+    
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+    
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+        return $this;
+    }
+    
     private $theme;
     
     public function getTheme()
@@ -37,5 +50,18 @@ class Context
             }
         }
         return null;
+    }
+    
+    private $properties = array();
+    
+    public function setProperty($property)
+    {
+        $this->properties[$property->getName()] = $property;
+        return $this;
+    }
+    
+    public function getProperties()
+    {
+        return $this->properties;
     }
 }

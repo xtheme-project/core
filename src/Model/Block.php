@@ -4,6 +4,8 @@ namespace XTheme\Core\Model;
 
 class Block
 {
+    use PropertyTrait;
+    
     protected $name;
     
     public function getName()
@@ -56,23 +58,6 @@ class Block
         return $this;
     }
     
-    protected $properties = array();
-    
-    public function addProperty(Property $property)
-    {
-        $this->properties[$property->getName()] = $property;
-    }
-    
-    public function getProperties()
-    {
-        return $this->properties;
-    }
-
-    
-    public function getProperty($name)
-    {
-        return $this->properties[$name];
-    }
     
     protected $editable = 'Y';
     

@@ -22,7 +22,9 @@ class XmlSiteLoader
         foreach ($rootNode->page as $pageNode) {
             $page = new Page();
             $page->setName((string)$pageNode['name']);
+            $page->setUrl((string)$pageNode['url']);
             $page->setTemplate((string)$pageNode['template']);
+            $this->loadProperties($pageNode->property, $page);
             
             $this->loadContents($pageNode->content, $page);
             $site->addPage($page);
@@ -30,17 +32,23 @@ class XmlSiteLoader
         return $site;
     }
     
+    private function loadProperties($propertyNodes, $container)
+    {
+        foreach ($propertyNodes as $propertyNode) {
+            $property = new Property();
+            $property->setName((string)$propertyNode['name']);
+            $property->setLanguage((string)$propertyNode['language']);
+            $property->setValue((string)$propertyNode);
+            $container->setProperty($property);
+        }
+    }
+    
     private function loadContents(SimpleXmlElement $contentsNode, $container)
     {
         foreach ($contentsNode as $contentNode) {
             $content = new Content();
             $content->setBlock((string)$contentNode['block']);
-            foreach ($contentNode->property as $propertyNode) {
-                $property = new Property();
-                $property->setName((string)$propertyNode['name']);
-                $property->setValue((string)$propertyNode);
-                $content->addProperty($property);
-            }
+            $this->loadProperties($contentNode->property, $content);
             $container->addContent($content);
         }
     }

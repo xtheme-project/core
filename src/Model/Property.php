@@ -17,6 +17,19 @@ class Property
         return $this;
     }
     
+    protected $language;
+    
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+    
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+        return $this;
+    }
+    
     protected $value;
     
     public function getValue()

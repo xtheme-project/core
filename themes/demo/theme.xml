@@ -8,7 +8,7 @@
         inPageEditing="true"
         global="true"
         >
-        <property name="content">info@example.com</property>
+        <property name="content" language="en">info@example.com</property>
         <header>START</header>
         <footer>END</footer>
     </block>
@@ -20,9 +20,30 @@
         inPageEditing="true"
         global="true"
         >
-        <property name="content">no phone</property>
+        <property name="content" language="en">no phone</property>
+        <property name="content" language="nl">geen telefoon</property>
         <header>STARTPHONE</header>
         <footer>ENDPHONE</footer>
+    </block>
+    
+    <block
+        name="page-content"
+        type="HTML"
+        editable="true"
+        inPageEditing="true"
+        global="true"
+        >
+        <property name="content" language="en">no content</property>
+        <header>
+            <![CDATA[
+            <div class="container">
+            ]]>
+        </header>
+        <footer>
+            <![CDATA[
+            </div>
+            ]]>
+        </footer>
     </block>
     
     <block
@@ -42,7 +63,7 @@
             block-id="Blog: Title"
             required="no"
             hide="no"
-            code="#ITEM_TITLE#">
+            code="##item-title##">
         </field>
         <view
             name="default">

@@ -1,12 +1,11 @@
 <html>
     <head>
-        <title>Page title</title>
+        <title>##PAGE-TITLE##</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     </head>
     <body>
         {{include name="header.html" title="Header include" }}
-        <div class="container">
-            Page content goes here..
-        </div>
+        {{block name="page-content" title="The main content of this page" }}
         {{include name="footer.html" title="Footer include" }}
 
     </body>

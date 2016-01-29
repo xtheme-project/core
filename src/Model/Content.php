@@ -4,6 +4,8 @@ namespace XTheme\Core\Model;
 
 class Content
 {
+    use PropertyTrait;
+    
     protected $block;
     
     public function getBlock()
@@ -15,22 +17,5 @@ class Content
     {
         $this->block = $block;
         return $this;
-    }
-    
-    protected $properties = array();
-
-    public function addProperty(Property $property)
-    {
-        $this->properties[$property->getName()] = $property;
-    }
-
-    public function getProperties()
-    {
-        return $this->properties;
-    }
-    
-    public function getProperty($name)
-    {
-        return $this->properties[$name];
     }
 }

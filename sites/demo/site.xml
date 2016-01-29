@@ -2,37 +2,49 @@
     name="My demo website"
     homepage="home"
     >
-    <language name="English" />
+    <language code="en" name="English" />
     
     <content block="common: email">
-        <property name="content">joe@johnson.com</property>
+        <property name="content" language="en">joe@johnson.com</property>
     </content>
     <content block="Common: phone">
-        <property name="content">9999-99999-99</property>
+        <property name="content" language="en">9999-99999-99</property>
     </content>
 
     <page
         language="English"
+        url="/"
         name="home"
-        title="The homepage"
         template="layout.html"
         active="true"
         parent=""
-
-        meta_title="bla"
-        meta_keywords="hello, world"
-        meta_description="yo"
-        og_title="bla"
-        og_description="ahaha"
-        og_image="some image"
         redirect_internal="contact"
         redirect_statuscode="301"
         date_start="01-01-2016"
         date_end="31-12-2016"
-        url="/">
+        >
+        <property name="page-title" language="en">The homepage</property>
+        <property name="meta-title" language="en">The meta title</property>
+        <property name="meta-keywords" language="en">The meta keywords</property>
+        <property name="meta-description" language="en">The meta description</property>
+        <property name="og-title" language="en">The Open Graph title</property>
+        <property name="og-description" language="en">The Open Graph description</property>
+        <property name="og-image" language="en">https://coastaltangents.files.wordpress.com/2014/03/smilie-face.png</property>
         
-        <content block="home: cta">
-            <property name="content">Buy now!!</property>
+        <content block="page-content">
+            <property name="content" language="en">Welcome to the homepage</property>
+        </content>
+    </page>
+    
+    <page
+        language="English"
+        url="/contact"
+        name="contact"
+        template="layout.html"
+        >
+        
+        <content block="page-content">
+            <property name="content" language="en">Contact us</property>
         </content>
     </page>
     <list name="blog">

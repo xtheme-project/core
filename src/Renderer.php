@@ -15,15 +15,23 @@ class Renderer
 {
     private function renderContent(Block $block, $content, Context $context)
     {
-        $value = $block->getProperty('content')->getValue();
+        $value = null;
+        $property = $block->getProperty($context->getLanguage(), 'content');
+        if ($property) {
+            $value = $property->getValue();
+        }
         if ($content) {
-            $value = $content->getProperty('content')->getValue();
+            $property = $content->getProperty($context->getLanguage(), 'content');
+            if ($property) {
+                $value = $property->getValue();
+            }
         }
         if ($value) {
             $value = $block->getHeader() . $value . $block->getFooter();
         }
         return $value;
     }
+    
     private function getTagValue(Tag $tag, Context $context)
     {
         switch ($tag->getName()) {
@@ -71,9 +79,20 @@ class Renderer
         return $string;
     }
     
+    private function processProperties($string, Context $context)
+    {
+        foreach ($context->getProperties() as $property) {
+            $source = '##' . strtoupper($property->getName()) . '##';
+            $string = str_replace($source, $property->getValue(), $string);
+        }
+        return $string;
+    }
+    
     public function renderSitePage(Theme $theme, Site $site, $pageName, $language = null)
     {
+        $language='en';
         $context = new Context();
+        $context->setLanguage($language);
         $context->setTheme($theme);
         // Load all site-wide contents into the context
         foreach ($site->getContents() as $content) {
@@ -91,10 +110,16 @@ class Renderer
         if (!$page) {
             throw new RuntimeException("No such page in site: " . $pageName);
         }
+    
+        foreach ($page->getPropertiesByLanguage($language) as $property) {
+            $context->setProperty($property);
+        }
+        
         $templateName = $page->getTemplate();
         $templateFilename = $theme->getBasePath() . '/code/' . $templateName;
         $data = file_get_contents($templateFilename);
         $data = $this->processTags($data, $context);
+        $data = $this->processProperties($data, $context);
         //echo "\n##FINAL:##\n" . $data; exit('boom');
         return $data;
     }

@@ -29,8 +29,9 @@ class XmlThemeLoader
             foreach ($blockNode->property as $propertyNode) {
                 $property = new Property();
                 $property->setName((string)$propertyNode['name']);
+                $property->setLanguage((string)$propertyNode['language']);
                 $property->setValue((string)$propertyNode);
-                $block->addProperty($property);
+                $block->setProperty($property);
             }
             $theme->addBlock($block);
         }
