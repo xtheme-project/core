@@ -90,7 +90,7 @@ class Renderer
     
     public function renderSitePage(Theme $theme, Site $site, $pageName, $language = null)
     {
-        $language='en';
+        // TODO: Verify if $language is a supported language
         $context = new Context();
         $context->setLanguage($language);
         $context->setTheme($theme);
